@@ -1,22 +1,29 @@
-var bg;
+var bg, body;
+var bodies = [];
 var clothing = [];
 
 var PILE_MIN_X = 75;
-var PILE_MIN_Y = 150;
+var PILE_MIN_Y = 250;
 var PILE_MAX_X = 1150;
 var PILE_MAX_Y = 950;
 
 function initGame()
 {
-	bg = new createjs.Bitmap(queue.getResult("mockup"));
+	bg = new createjs.Bitmap(queue.getResult("bg"));
 
-	initClothingItem("mockup-hat");
-	initClothingItem("mockup-hat");
-	initClothingItem("mockup-hat");
-	initClothingItem("mockup-hat");
-	initClothingItem("mockup-shirt");
-	initClothingItem("mockup-shirt");
-	initClothingItem("mockup-shirt");
+	body = new createjs.Container();
+	body.x = 1200;
+	for (var i = 0; i < 9; i++)
+	{
+		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
+		bodies.push(bodybmp);
+		body.addChild(bodybmp);
+	}
+
+	initClothingItem("face01");
+	initClothingItem("hair01");
+	initClothingItem("neck01");
+	initClothingItem("top01");
 }
 
 function startGame()
@@ -24,6 +31,7 @@ function startGame()
 	currentScreen = SCREEN_GAME;
 
 	stage.addChild(bg);
+	stage.addChild(body);
 
 	var n;
 	for (n of clothing)
@@ -44,9 +52,13 @@ function initClothingItem(name)
 	c = new createjs.Bitmap(queue.getResult(name));
 	c.regX = c.getBounds().width/2;
 	c.regY = c.getBounds().height/2;
+	c.cursor = "grab";
 
 	c.on("mousedown", function(evt)
 	{
+		var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
+    	evt.target.x = newPos.x;
+    	evt.target.y = newPos.y;
 		stage.setChildIndex(evt.target, stage.numChildren-1);
 	});
 	c.on("pressmove", function(evt)

@@ -1,5 +1,19 @@
 { "manifest": [
+{ "id": "bg", "src": "img/bg.png" },
+{ "id": "col01", "src": "img/col01.png" },
+{ "id": "col02", "src": "img/col02.png" },
+{ "id": "col03", "src": "img/col03.png" },
+{ "id": "col04", "src": "img/col04.png" },
+{ "id": "col05", "src": "img/col05.png" },
+{ "id": "col06", "src": "img/col06.png" },
+{ "id": "col07", "src": "img/col07.png" },
+{ "id": "col08", "src": "img/col08.png" },
+{ "id": "col09", "src": "img/col09.png" },
+{ "id": "face01", "src": "img/face01.png" },
+{ "id": "hair01", "src": "img/hair01.png" },
 { "id": "mockup-hat", "src": "img/mockup-hat.jpg" },
 { "id": "mockup-shirt", "src": "img/mockup-shirt.jpg" },
-{ "id": "mockup", "src": "img/mockup.jpg" }
+{ "id": "mockup", "src": "img/mockup.jpg" },
+{ "id": "neck01", "src": "img/neck01.png" },
+{ "id": "top01", "src": "img/top01.png" }
 ] }
