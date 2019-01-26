@@ -35,14 +35,14 @@ function initGame()
 		body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
 	});
 
-	initClothingItem("face01");
-	initClothingItem("hair01");
-	initClothingItem("neck01");
-	initClothingItem("top01");
-	initClothingItem("bottom01");
-	initClothingItem("beard01");
-	initClothingItem("cat01");
-	initClothingItem("shoes01");
+	initClothingItems("face");
+	initClothingItems("hair");
+	initClothingItems("neck");
+	initClothingItems("top");
+	initClothingItems("bottom");
+	initClothingItems("beard");
+	initClothingItems("cat");
+	initClothingItems("shoes");
 
 	prompt = new createjs.Text("", "32px Open Sans", "#333333");
 	prompt.textAlign = "center";
@@ -77,29 +77,38 @@ function restartGame()
 	startGame();
 }
 
-function initClothingItem(name)
+function initClothingItems(type)
 {
-	var c = {};
-	c = new createjs.Bitmap(queue.getResult(name));
-	c.regX = c.getBounds().width/2;
-	c.regY = c.getBounds().height/2;
-	c.cursor = "grab";
-
-	c.on("mousedown", function(evt)
+	var i = 1;
+	while(true)
 	{
-		var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
-    	evt.target.x = newPos.x;
-    	evt.target.y = newPos.y;
-		stage.setChildIndex(evt.target, stage.numChildren-1);
-	});
-	c.on("pressmove", function(evt)
-	{
-		var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
-    	evt.target.x = newPos.x;
-    	evt.target.y = newPos.y;
-	});
+		var file = queue.getResult(type+"0"+i);
+		if (!file) return;
 
-	clothing.push(c);
+		var c = {};
+		c = new createjs.Bitmap(file);
+
+		c.regX = c.getBounds().width/2;
+		c.regY = c.getBounds().height/2;
+		c.cursor = "grab";
+
+		c.on("mousedown", function(evt)
+		{
+			var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
+	    	evt.target.x = newPos.x;
+	    	evt.target.y = newPos.y;
+			stage.setChildIndex(evt.target, stage.numChildren-1);
+		});
+		c.on("pressmove", function(evt)
+		{
+			var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
+	    	evt.target.x = newPos.x;
+	    	evt.target.y = newPos.y;
+		});
+
+		clothing.push(c);
+		i++;
+	}
 }
 
 function placeClothingItem(item)
