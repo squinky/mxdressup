@@ -7,6 +7,8 @@ var PILE_MIN_Y = 250;
 var PILE_MAX_X = 1150;
 var PILE_MAX_Y = 950;
 
+var prompt, grammar;
+
 function initGame()
 {
 	bg = new createjs.Bitmap(queue.getResult("bg"));
@@ -24,6 +26,18 @@ function initGame()
 	initClothingItem("hair01");
 	initClothingItem("neck01");
 	initClothingItem("top01");
+	initClothingItem("bottom01");
+	initClothingItem("beard01");
+	initClothingItem("cat01");
+	initClothingItem("shoes01");
+
+	prompt = new createjs.Text("", "32px Open Sans", "#333333");
+	prompt.textAlign = "center";
+	prompt.x = ACTUAL_WIDTH/2;
+	prompt.y = ACTUAL_HEIGHT - 60;
+
+	grammar = tracery.createGrammar(text);
+	grammar.addModifiers(baseEngModifiers);
 }
 
 function startGame()
@@ -32,6 +46,9 @@ function startGame()
 
 	stage.addChild(bg);
 	stage.addChild(body);
+
+	prompt.text = grammar.flatten("#prompt#");
+	stage.addChild(prompt);
 
 	var n;
 	for (n of clothing)

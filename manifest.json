@@ -1,5 +1,8 @@
 { "manifest": [
+{ "id": "beard01", "src": "img/beard01.png" },
 { "id": "bg", "src": "img/bg.png" },
+{ "id": "bottom01", "src": "img/bottom01.png" },
+{ "id": "cat01", "src": "img/cat01.png" },
 { "id": "col01", "src": "img/col01.png" },
 { "id": "col02", "src": "img/col02.png" },
 { "id": "col03", "src": "img/col03.png" },
@@ -15,5 +18,6 @@
 { "id": "mockup-shirt", "src": "img/mockup-shirt.jpg" },
 { "id": "mockup", "src": "img/mockup.jpg" },
 { "id": "neck01", "src": "img/neck01.png" },
+{ "id": "shoes01", "src": "img/shoes01.png" },
 { "id": "top01", "src": "img/top01.png" }
 ] }

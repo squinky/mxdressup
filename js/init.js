@@ -32,7 +32,7 @@ function init()
 function showLoadingScreen()
 {
 	currentScreen = SCREEN_LOADING;
-	loadText = new createjs.Text("loading: 0%", "72px Arial", "#ffffff");
+	loadText = new createjs.Text("loading: 0%", "72px Open Sans", "#ffffff");
 	loadText.textAlign = "center";
 	loadText.x = ACTUAL_WIDTH/2;
 	loadText.y = ACTUAL_HEIGHT/2 - 36;
