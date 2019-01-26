@@ -7,7 +7,7 @@ var PILE_MIN_Y = 250;
 var PILE_MAX_X = 1150;
 var PILE_MAX_Y = 950;
 
-var prompt, grammar;
+var inspiration, prompt, grammar;
 
 function initGame()
 {
@@ -25,8 +25,8 @@ function initGame()
 	body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
 
 	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
-	skinToneChanger.x = 1720;
-	skinToneChanger.y = 800;
+	skinToneChanger.x = 1300;
+	skinToneChanger.y = 100;
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
 	{
@@ -43,11 +43,19 @@ function initGame()
 	initClothingItems("beard");
 	initClothingItems("cat");
 	initClothingItems("shoes");
+	initClothingItems("hat");
 
 	prompt = new createjs.Text("", "32px Open Sans", "#333333");
 	prompt.textAlign = "center";
 	prompt.x = ACTUAL_WIDTH/2;
 	prompt.y = ACTUAL_HEIGHT - 60;
+
+	inspiration = new createjs.Shape(new createjs.Graphics().beginFill("rgba(0,0,0,0.01)").drawRect(0, ACTUAL_HEIGHT-80, ACTUAL_WIDTH, 66));
+	inspiration.cursor = "pointer";
+	inspiration.on("click", function(evt)
+	{
+		changeInspirationText();
+	});
 
 	grammar = tracery.createGrammar(text);
 	grammar.addModifiers(baseEngModifiers);
@@ -61,8 +69,9 @@ function startGame()
 	stage.addChild(body);
 	stage.addChild(skinToneChanger);
 
-	prompt.text = grammar.flatten("#prompt#");
+	changeInspirationText();
 	stage.addChild(prompt);
+	stage.addChild(inspiration);
 
 	var n;
 	for (n of clothing)
@@ -88,22 +97,18 @@ function initClothingItems(type)
 		var c = {};
 		c = new createjs.Bitmap(file);
 
-		c.regX = c.getBounds().width/2;
-		c.regY = c.getBounds().height/2;
 		c.cursor = "grab";
 
 		c.on("mousedown", function(evt)
 		{
-			var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
-	    	evt.target.x = newPos.x;
-	    	evt.target.y = newPos.y;
 			stage.setChildIndex(evt.target, stage.numChildren-1);
+			c.posOnObject = evt.target.globalToLocal(evt.stageX, evt.stageY);
 		});
 		c.on("pressmove", function(evt)
 		{
 			var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
-	    	evt.target.x = newPos.x;
-	    	evt.target.y = newPos.y;
+	    	evt.target.x = newPos.x - c.posOnObject.x;
+	    	evt.target.y = newPos.y - c.posOnObject.y;
 		});
 
 		clothing.push(c);
@@ -116,10 +121,10 @@ function placeClothingItem(item)
 	var xpos = Math.floor(Math.random() * (PILE_MAX_X - PILE_MIN_X)) + PILE_MIN_X;
 	var ypos = Math.floor(Math.random() * (PILE_MAX_Y - PILE_MIN_Y)) + PILE_MIN_Y;
 
-	if ((xpos - item.getBounds().width/2) < PILE_MIN_X) xpos = PILE_MIN_X + item.getBounds().width/2;
-	if ((ypos - item.getBounds().height/2) < PILE_MIN_Y) ypos = PILE_MIN_Y + item.getBounds().height/2;
-	if ((xpos + item.getBounds().width/2) > PILE_MAX_X) xpos = PILE_MAX_X - item.getBounds().width/2;
-	if ((ypos + item.getBounds().height/2) > PILE_MAX_Y) ypos = PILE_MAX_Y - item.getBounds().height/2;
+	if (xpos < PILE_MIN_X) xpos = PILE_MIN_X ;
+	if (ypos < PILE_MIN_Y) ypos = PILE_MIN_Y;
+	if ((xpos + item.getBounds().width) > PILE_MAX_X) xpos = PILE_MAX_X - item.getBounds().width;
+	if ((ypos + item.getBounds().height) > PILE_MAX_Y) ypos = PILE_MAX_Y - item.getBounds().height;
 
 	item.x = xpos;
 	item.y = ypos;
@@ -127,4 +132,10 @@ function placeClothingItem(item)
 	var zindex = Math.floor(Math.random() * stage.numChildren) + 1;
 
 	stage.addChildAt(item, zindex);
+}
+
+function changeInspirationText()
+{
+	var str = grammar.flatten("#prompt#");
+	prompt.text = str.replace("%", "#");
 }
