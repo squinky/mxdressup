@@ -1,4 +1,4 @@
-var bg, body;
+var bg, body, skinToneChanger, currentSkinTone;
 var bodies = [];
 var clothing = [];
 
@@ -15,12 +15,25 @@ function initGame()
 
 	body = new createjs.Container();
 	body.x = 1200;
-	for (var i = 0; i < 9; i++)
+	for (var i = 1; i <= 9; i++)
 	{
 		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
 		bodies.push(bodybmp);
 		body.addChild(bodybmp);
 	}
+	currentSkinTone = Math.floor(Math.random() * (bodies.length));
+	body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
+
+	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
+	skinToneChanger.x = 1720;
+	skinToneChanger.y = 800;
+	skinToneChanger.cursor = "pointer";
+	skinToneChanger.on("click", function(evt)
+	{
+		currentSkinTone++;
+		if (currentSkinTone == bodies.length) currentSkinTone = 0;
+		body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
+	});
 
 	initClothingItem("face01");
 	initClothingItem("hair01");
@@ -46,6 +59,7 @@ function startGame()
 
 	stage.addChild(bg);
 	stage.addChild(body);
+	stage.addChild(skinToneChanger);
 
 	prompt.text = grammar.flatten("#prompt#");
 	stage.addChild(prompt);

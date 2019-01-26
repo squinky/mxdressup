@@ -19,5 +19,6 @@
 { "id": "mockup", "src": "img/mockup.jpg" },
 { "id": "neck01", "src": "img/neck01.png" },
 { "id": "shoes01", "src": "img/shoes01.png" },
+{ "id": "skintonechanger", "src": "img/skintonechanger.png" },
 { "id": "top01", "src": "img/top01.png" }
 ] }
