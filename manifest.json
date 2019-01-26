@@ -1,3 +1,5 @@
 { "manifest": [
+{ "id": "mockup-hat", "src": "img/mockup-hat.jpg" },
+{ "id": "mockup-shirt", "src": "img/mockup-shirt.jpg" },
 { "id": "mockup", "src": "img/mockup.jpg" }
 ] }
