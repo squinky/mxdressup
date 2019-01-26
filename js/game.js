@@ -45,6 +45,10 @@ function initClothingItem(name)
 	c.regX = c.getBounds().width/2;
 	c.regY = c.getBounds().height/2;
 
+	c.on("mousedown", function(evt)
+	{
+		stage.setChildIndex(evt.target, stage.numChildren-1);
+	});
 	c.on("pressmove", function(evt)
 	{
 		var newPos = stage.globalToLocal(evt.stageX, evt.stageY);
