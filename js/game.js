@@ -38,8 +38,8 @@ function initGame()
 	face.addChild(faces[currentFace]);
 
 	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
-	skinToneChanger.x = 1200;
-	skinToneChanger.y = 100;
+	skinToneChanger.x = 174;
+	skinToneChanger.y = 700;
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
 	{
@@ -50,8 +50,8 @@ function initGame()
 	});
 
 	faceChanger = new createjs.Bitmap(queue.getResult("facechanger"));
-	faceChanger.x = 1675;
-	faceChanger.y = 275;
+	faceChanger.x = 1750;
+	faceChanger.y = 800;
 	faceChanger.cursor = "pointer";
 	faceChanger.on("click", function(evt)
 	{
@@ -62,8 +62,8 @@ function initGame()
 	});
 
 	refresh = new createjs.Bitmap(queue.getResult("refresh"));
-	refresh.x = 1700;
-	refresh.y = 750;
+	refresh.x = 1725;
+	refresh.y = 900;
 	refresh.cursor = "pointer";
 	refresh.on("click", function(evt)
 	{
