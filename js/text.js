@@ -2,7 +2,7 @@ var text =
 {
 	prompt: "INSPIRATION: dress for #occasion#",
 
-	mealAdj: "awkward delicious expensive ostentatious pleasant quick quiet tense uncomfortable".split(" "),
+	mealAdj: "awkward delicious expensive noisy ostentatious pleasant quick quiet tense uncomfortable".split(" "),
 	meal: "breakfast brunch dinner lunch supper tea coffee".split(" "),
 	ages: "ages years decades forever eons".split(" "),
 	instrument: "piano violin guitar viola cello ukulele tuba trombone trumpet euphonium clarinet oboe bassoon flute recorder otamatone".split(" "),
@@ -49,8 +49,10 @@ var text =
 		"some rando you met on OKCupid",
 		"the cute barista at your favourite coffee shop",
 		"that one night stand you'd rather forget",
+		"a sentient AI",
 		"Beyonce",
 		"Marie Kondo",
+		"Madonna",
 		"#person#'s mom",
 		"#person#'s dad",
 		"#person#'s roommate",
@@ -72,7 +74,9 @@ var text =
 		"discrete math",
 		"women's studies",
 		"English",
-		"philosophy"
+		"English literature",
+		"philosophy",
+		"intro to game design"
 	],
 
 	specialOccasion:
@@ -80,7 +84,7 @@ var text =
 		"birthday party",
 		"thesis defence",
 		"graduation",
-		"choir concert",
+		"#choir# concert",
 		"#instrument# recital",
 		"#dance# recital",
 		"#sportsball# game"
@@ -89,7 +93,7 @@ var text =
 	activity:
 	[
 		"band practice",
-		"choir practice",
+		"#choir# practice",
 		"#dance# class",
 		"board games with #people#",
 		"playing Mario Kart with #people#",
@@ -98,7 +102,8 @@ var text =
 		"doing crimes",
 		"your future career as an instagram model %blessed",
 		"that queer meetup group you're too nervous to actually show up to",
-		"a quiet night in with your cat"
+		"a quiet night in with your cat",
+		"punching nazis"
 	],
 
 	dance:
@@ -119,6 +124,15 @@ var text =
 		"Capoeira",
 		"belly dance",
 		"Zumba"
+	],
+
+	choir:
+	[
+		"choir",
+		"barbershop quartet",
+		"gospel choir",
+		"show choir",
+		"Gregorian chant"
 	],
 
 	occasion:
