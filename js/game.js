@@ -50,8 +50,8 @@ function initGame()
 	});
 
 	faceChanger = new createjs.Bitmap(queue.getResult("facechanger"));
-	faceChanger.x = 1735;
-	faceChanger.y = 740;
+	faceChanger.x = 1725;
+	faceChanger.y = 745;
 	faceChanger.cursor = "pointer";
 	faceChanger.on("click", function(evt)
 	{
