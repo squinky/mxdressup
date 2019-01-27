@@ -39,7 +39,7 @@ function initGame()
 
 	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
 	skinToneChanger.x = 1720;
-	skinToneChanger.y = 585;
+	skinToneChanger.y = 580;
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
 	{
@@ -62,7 +62,7 @@ function initGame()
 	});
 
 	refresh = new createjs.Bitmap(queue.getResult("refresh"));
-	refresh.x = 1730;
+	refresh.x = 1735;
 	refresh.y = 920;
 	refresh.cursor = "pointer";
 	refresh.on("click", function(evt)
