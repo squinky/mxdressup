@@ -54,6 +54,7 @@ function initGame()
 	initClothingItems("cat");
 	initClothingItems("shoes");
 	initClothingItems("hat");
+	initClothingItems("octopus");
 
 	prompt = new createjs.Text("", "32px Open Sans", "#333333");
 	prompt.textAlign = "center";
