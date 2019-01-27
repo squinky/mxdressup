@@ -20,10 +20,9 @@ function initGame()
 	{
 		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
 		bodies.push(bodybmp);
-		body.addChild(bodybmp);
 	}
 	currentSkinTone = Math.floor(Math.random() * (bodies.length));
-	body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
+	body.addChild(bodies[currentSkinTone]);
 
 	face = new createjs.Container();
 	face.x = 1525;
@@ -44,9 +43,10 @@ function initGame()
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
 	{
+		body.removeAllChildren();
 		currentSkinTone++;
 		if (currentSkinTone == bodies.length) currentSkinTone = 0;
-		body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
+		body.addChild(bodies[currentSkinTone]);
 	});
 
 	faceChanger = new createjs.Bitmap(queue.getResult("facechanger"));
