@@ -51,6 +51,9 @@
 { "id": "mockup-hat", "src": "img/mockup-hat.jpg" },
 { "id": "mockup-shirt", "src": "img/mockup-shirt.jpg" },
 { "id": "mockup", "src": "img/mockup.jpg" },
+{ "id": "mustache01", "src": "img/mustache01.png" },
+{ "id": "mustache02", "src": "img/mustache02.png" },
+{ "id": "mustache03", "src": "img/mustache03.png" },
 { "id": "neck01", "src": "img/neck01.png" },
 { "id": "neck02", "src": "img/neck02.png" },
 { "id": "octopus01", "src": "img/octopus01.png" },
@@ -67,6 +70,6 @@
 { "id": "top03", "src": "img/top03.png" },
 { "id": "top04", "src": "img/top04.png" },
 { "id": "top05", "src": "img/top05.png" },
-{ "id": "vogue-midi", "src": "sfx/vogue-midi.ogg" },
-{ "id": "top06", "src": "img/top06.png" }
+{ "id": "top06", "src": "img/top06.png" },
+{ "id": "vogue-midi", "src": "sfx/vogue-midi.ogg" }
 ] }
