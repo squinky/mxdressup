@@ -1,11 +1,11 @@
-var bg, body, skinToneChanger, currentSkinTone, refresh;
+var bg, body, face, skinToneChanger, faceChanger, currentSkinTone, currentFace, refresh;
 var bodies = [];
-var clothing = [];
 var faces = [];
+var clothing = [];
 
 var PILE_MIN_X = 75;
-var PILE_MIN_Y = 450;
-var PILE_MAX_X = 1150;
+var PILE_MIN_Y = 250;
+var PILE_MAX_X = 1100;
 var PILE_MAX_Y = 950;
 
 var inspiration, prompt, grammar;
@@ -15,7 +15,7 @@ function initGame()
 	bg = new createjs.Bitmap(queue.getResult("bg"));
 
 	body = new createjs.Container();
-	body.x = 1150;
+	body.x = 1100;
 	for (var i = 1; i <= 9; i++)
 	{
 		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
@@ -25,8 +25,19 @@ function initGame()
 	currentSkinTone = Math.floor(Math.random() * (bodies.length));
 	body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
 
+	face = new createjs.Container();
+	face.x = 1475;
+	face.y = 200;
+	for (var i = 1; i <= 9; i++)
+	{
+		var facebmp = new createjs.Bitmap(queue.getResult("face0"+i));
+		faces.push(facebmp);
+	}
+	currentFace = Math.floor(Math.random() * (faces.length));
+	face.addChild(faces[currentFace]);
+
 	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
-	skinToneChanger.x = 1250;
+	skinToneChanger.x = 1200;
 	skinToneChanger.y = 100;
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
@@ -34,6 +45,18 @@ function initGame()
 		currentSkinTone++;
 		if (currentSkinTone == bodies.length) currentSkinTone = 0;
 		body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
+	});
+
+	faceChanger = new createjs.Bitmap(queue.getResult("facechanger"));
+	faceChanger.x = 1675;
+	faceChanger.y = 275;
+	faceChanger.cursor = "pointer";
+	faceChanger.on("click", function(evt)
+	{
+		face.removeAllChildren();
+		currentFace++;
+		if (currentFace == faces.length) currentFace = 0;
+		face.addChild(faces[currentFace]);
 	});
 
 	refresh = new createjs.Bitmap(queue.getResult("refresh"));
@@ -45,7 +68,6 @@ function initGame()
 		restartGame();
 	});
 
-	initClothingItems("face");
 	initClothingItems("hair");
 	initClothingItems("neck");
 	initClothingItems("top");
@@ -78,7 +100,9 @@ function startGame()
 
 	stage.addChild(bg);
 	stage.addChild(body);
+	stage.addChild(face);
 	stage.addChild(skinToneChanger);
+	stage.addChild(faceChanger);
 	stage.addChild(refresh);
 
 	changeInspirationText();
@@ -90,8 +114,6 @@ function startGame()
 	{
 		placeClothingItem(n);		
 	}
-	
-	placeFaces();
 }
 
 function restartGame()
@@ -125,21 +147,15 @@ function initClothingItems(type)
 	    	evt.target.y = newPos.y - c.posOnObject.y;
 		});
 
-		if (type == "face") faces.push(c);
-		else clothing.push(c);
+		clothing.push(c);
 		i++;
 	}
 }
 
 function placeClothingItem(item)
 {
-	var xpos = Math.floor(Math.random() * (PILE_MAX_X - PILE_MIN_X)) + PILE_MIN_X;
-	var ypos = Math.floor(Math.random() * (PILE_MAX_Y - PILE_MIN_Y)) + PILE_MIN_Y;
-
-	if (xpos < PILE_MIN_X) xpos = PILE_MIN_X ;
-	if (ypos < PILE_MIN_Y) ypos = PILE_MIN_Y;
-	if ((xpos + item.getBounds().width) > PILE_MAX_X) xpos = PILE_MAX_X - item.getBounds().width;
-	if ((ypos + item.getBounds().height) > PILE_MAX_Y) ypos = PILE_MAX_Y - item.getBounds().height;
+	var xpos = Math.floor(Math.random() * (PILE_MAX_X - PILE_MIN_X - item.getBounds().width)) + PILE_MIN_X;
+	var ypos = Math.floor(Math.random() * (PILE_MAX_Y - PILE_MIN_Y - item.getBounds().height)) + PILE_MIN_Y;
 
 	item.x = xpos;
 	item.y = ypos;
@@ -147,16 +163,6 @@ function placeClothingItem(item)
 	var zindex = Math.floor(Math.random() * stage.numChildren) + 1;
 
 	stage.addChildAt(item, zindex);
-}
-
-function placeFaces()
-{
-	for (var i = 0; i < faces.length; i++)
-	{
-		faces[i].x = 75 + (1075/faces.length)*i;
-		faces[i].y = 250 + 50*(i%2);
-		stage.addChild(faces[i]);
-	}
 }
 
 function changeInspirationText()
