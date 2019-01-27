@@ -5,7 +5,7 @@ var clothing = [];
 
 var PILE_MIN_X = 75;
 var PILE_MIN_Y = 250;
-var PILE_MAX_X = 1100;
+var PILE_MAX_X = 960;
 var PILE_MAX_Y = 950;
 
 var inspiration, prompt, grammar;
@@ -16,7 +16,7 @@ function initGame()
 	bg = new createjs.Bitmap(queue.getResult("bg"));
 
 	body = new createjs.Container();
-	body.x = 1100;
+	body.x = 960;
 	for (var i = 1; i <= 9; i++)
 	{
 		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
@@ -26,7 +26,7 @@ function initGame()
 	body.addChild(bodies[currentSkinTone]);
 
 	face = new createjs.Container();
-	face.x = 1525;
+	face.x = 1385;
 	face.y = 265;
 	for (var i = 1; i <= 9; i++)
 	{
@@ -39,8 +39,8 @@ function initGame()
 	face.addChild(faces[currentFace]);
 
 	skinToneChanger = new createjs.Bitmap(queue.getResult("skintonechanger"));
-	skinToneChanger.x = 1200;
-	skinToneChanger.y = 100;
+	skinToneChanger.x = 1670;
+	skinToneChanger.y = 495;
 	skinToneChanger.cursor = "pointer";
 	skinToneChanger.on("click", function(evt)
 	{
@@ -51,8 +51,8 @@ function initGame()
 	});
 
 	faceChanger = new createjs.Bitmap(queue.getResult("facechanger"));
-	faceChanger.x = 1675;
-	faceChanger.y = 275;
+	faceChanger.x = 1670;
+	faceChanger.y = 670;
 	faceChanger.cursor = "pointer";
 	faceChanger.on("click", function(evt)
 	{
@@ -63,8 +63,8 @@ function initGame()
 	});
 
 	refresh = new createjs.Bitmap(queue.getResult("refresh"));
-	refresh.x = 1700;
-	refresh.y = 750;
+	refresh.x = 1685;
+	refresh.y = 850;
 	refresh.cursor = "pointer";
 	refresh.on("click", function(evt)
 	{
