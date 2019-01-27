@@ -4,7 +4,7 @@ var text =
 
 	mealAdj: "awkward delicious expensive ostentatious pleasant quick quiet tense uncomfortable".split(" "),
 	meal: "breakfast brunch dinner lunch supper tea coffee".split(" "),
-	ages: "ages years decades forever".split(" "),
+	ages: "ages years decades forever eons".split(" "),
 	instrument: "piano violin guitar viola cello ukulele tuba trombone trumpet euphonium clarinet oboe bassoon flute recorder otamatone".split(" "),
 	sportsball: "baseball basketball football soccer hockey tennis badminton volleyball cricket dodgeball Calvinball".split(" "),
 
@@ -19,7 +19,8 @@ var text =
 		"your roommates",
 		"yourself",
 		"#person#",
-		"#person# and #person#"
+		"#person# and #person#",
+		"#person#, #person#, and #person#"
 	],
 
 	person:
