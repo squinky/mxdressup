@@ -13,14 +13,24 @@ var soundToggle, soundOn, soundOff, music;
 
 function initGame()
 {
+	var i, file;
+
 	bg = new createjs.Bitmap(queue.getResult("bg"));
 
 	body = new createjs.Container();
 	body.x = 960;
-	for (var i = 1; i <= 9; i++)
+	
+	i = 1;
+	file = null;
+	while(true)
 	{
-		var bodybmp = new createjs.Bitmap(queue.getResult("col0"+i));
+		file = fileExists("col", i);
+		if (!file) break;
+
+		var bodybmp = new createjs.Bitmap(file);
 		bodies.push(bodybmp);
+
+		i++;
 	}
 	currentSkinTone = Math.floor(Math.random() * (bodies.length));
 	body.addChild(bodies[currentSkinTone]);
@@ -28,12 +38,20 @@ function initGame()
 	face = new createjs.Container();
 	face.x = 1385;
 	face.y = 265;
-	for (var i = 1; i <= 9; i++)
+
+	i = 1;
+	file = null;
+	while(true)
 	{
-		var facebmp = new createjs.Bitmap(queue.getResult("face0"+i));
+		file = fileExists("face", i);
+		if (!file) break;
+
+		var facebmp = new createjs.Bitmap(file);
 		facebmp.regX = facebmp.getBounds().width/2;
 		facebmp.regY = facebmp.getBounds().height/2;
 		faces.push(facebmp);
+
+		i++;
 	}
 	currentFace = Math.floor(Math.random() * (faces.length));
 	face.addChild(faces[currentFace]);
@@ -147,10 +165,11 @@ function restartGame()
 function initClothingItems(type)
 {
 	var i = 1;
+	var file = null;
 	while(true)
 	{
-		var file = queue.getResult(type+"0"+i);
-		if (!file) return;
+		file = fileExists(type, i);
+		if (!file) break;
 
 		var c = {};
 		c = new createjs.Bitmap(file);
@@ -191,4 +210,14 @@ function changeInspirationText()
 {
 	var str = grammar.flatten("#prompt#");
 	prompt.text = str.replace("%", "#");
+	if (prompt.getMeasuredWidth() > ACTUAL_WIDTH) changeInspirationText();
+}
+
+function fileExists(type, i)
+{
+	var file;
+	if (file < 0) return file;
+	else if (i < 10) file = queue.getResult(type+"0"+i);
+	else file = queue.getResult(type+i);
+	return file;
 }
