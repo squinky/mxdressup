@@ -26,11 +26,13 @@ function initGame()
 	body.setChildIndex(bodies[currentSkinTone], body.numChildren-1);
 
 	face = new createjs.Container();
-	face.x = 1475;
-	face.y = 200;
+	face.x = 1525;
+	face.y = 265;
 	for (var i = 1; i <= 9; i++)
 	{
 		var facebmp = new createjs.Bitmap(queue.getResult("face0"+i));
+		facebmp.regX = facebmp.getBounds().width/2;
+		facebmp.regY = facebmp.getBounds().height/2;
 		faces.push(facebmp);
 	}
 	currentFace = Math.floor(Math.random() * (faces.length));
