@@ -53,9 +53,12 @@
 { "id": "refresh", "src": "img/refresh.png" },
 { "id": "shoes01", "src": "img/shoes01.png" },
 { "id": "skintonechanger", "src": "img/skintonechanger.png" },
+{ "id": "soundoff", "src": "img/soundoff.png" },
+{ "id": "soundon", "src": "img/soundon.png" },
 { "id": "top01", "src": "img/top01.png" },
 { "id": "top02", "src": "img/top02.png" },
 { "id": "top03", "src": "img/top03.png" },
 { "id": "top04", "src": "img/top04.png" },
-{ "id": "top05", "src": "img/top05.png" }
+{ "id": "top05", "src": "img/top05.png" },
+{ "id": "vogue-midi", "src": "sfx/vogue-midi.ogg" }
 ] }

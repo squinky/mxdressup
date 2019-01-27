@@ -9,6 +9,7 @@ var PILE_MAX_X = 1100;
 var PILE_MAX_Y = 950;
 
 var inspiration, prompt, grammar;
+var soundToggle, soundOn, soundOff, music;
 
 function initGame()
 {
@@ -95,6 +96,23 @@ function initGame()
 
 	grammar = tracery.createGrammar(text);
 	grammar.addModifiers(baseEngModifiers);
+
+	soundToggle = new createjs.Container();
+	soundOff = new createjs.Bitmap(queue.getResult("soundoff"));
+	soundOn = new createjs.Bitmap(queue.getResult("soundon"));
+	soundToggle.x = 1750;
+	soundToggle.y = 50;
+	soundToggle.cursor = "pointer";
+	soundToggle.addChild(soundOff);
+	soundToggle.on("click", function(evt)
+	{
+		if (!music) music = createjs.Sound.play("vogue-midi", { loop: -1 });
+		else music.paused = !music.paused;
+
+		soundToggle.removeAllChildren();
+		if (music.paused) soundToggle.addChild(soundOff);
+		else soundToggle.addChild(soundOn);
+	});
 }
 
 function startGame()
@@ -107,6 +125,7 @@ function startGame()
 	stage.addChild(skinToneChanger);
 	stage.addChild(faceChanger);
 	stage.addChild(refresh);
+	stage.addChild(soundToggle);
 
 	changeInspirationText();
 	stage.addChild(prompt);
