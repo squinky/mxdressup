@@ -1,5 +1,7 @@
 { "manifest": [
 { "id": "accessory01", "src": "img/accessory01.png" },
+{ "id": "accessory02", "src": "img/accessory02.png" },
+{ "id": "accessory03", "src": "img/accessory03.png" },
 { "id": "beard01", "src": "img/beard01.png" },
 { "id": "bg", "src": "img/bg.png" },
 { "id": "bottom01", "src": "img/bottom01.png" },
