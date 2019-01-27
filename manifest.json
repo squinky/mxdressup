@@ -3,6 +3,7 @@
 { "id": "accessory02", "src": "img/accessory02.png" },
 { "id": "accessory03", "src": "img/accessory03.png" },
 { "id": "accessory04", "src": "img/accessory04.png" },
+{ "id": "accessory05", "src": "img/accessory05.png" },
 { "id": "beard01", "src": "img/beard01.png" },
 { "id": "bg", "src": "img/bg.png" },
 { "id": "bottom01", "src": "img/bottom01.png" },
@@ -61,5 +62,6 @@
 { "id": "top02", "src": "img/top02.png" },
 { "id": "top03", "src": "img/top03.png" },
 { "id": "top04", "src": "img/top04.png" },
-{ "id": "top05", "src": "img/top05.png" }
+{ "id": "top05", "src": "img/top05.png" },
+{ "id": "top06", "src": "img/top06.png" }
 ] }
